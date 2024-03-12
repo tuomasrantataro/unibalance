@@ -50,6 +50,7 @@ const HEIGHT = WIDTH
 
 const R = 0.9 * WIDTH / 2
 
+// Copied from Dont.d.ts
 type Slant = "normal" | "italic" | "oblique";
 type Weight = "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
 
@@ -61,6 +62,14 @@ const fontStyle = {
   fontWeight: "bold" as Weight,
 };
 const font = matchFont(fontStyle);
+
+const clockFontStyle = {
+  fontFamily: "serif",
+  fontSize: 30,
+  fontStyle: "normal" as Slant,
+  fontWeight: "bold" as Weight,
+}
+const clockFont = matchFont(clockFontStyle)
 
 const HourClockFace = () => {
   return (
@@ -85,7 +94,7 @@ const HourClockFace = () => {
 
           return (
             <Text
-              font={font}
+              font={clockFont}
               y={y}
               x={x}
               text={`${index === 0 ? '00' : index}`}
@@ -116,7 +125,7 @@ const MinuteClockFace = () => {
 
           return (
             <Text
-              font={font}
+              font={clockFont}
               y={y}
               x={x}
               text={`${index === 0 ? '00' : index * 5}`}
@@ -147,7 +156,7 @@ const DurationClockFace = () => {
 
           return (
             <Text
-              font={font}
+              font={clockFont}
               y={y}
               x={x}
               text={`${index === 0 ? '12' : index}`}
