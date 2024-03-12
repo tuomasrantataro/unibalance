@@ -10,8 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@shopify/react-native-skia": "^0.1.241",
     "react": "18.2.0",
-    "react-native": "0.73.5"
+    "react-native": "0.73.5",
+    "react-native-get-random-values": "^1.11.0",
+    "react-native-webview": "^13.8.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -23,6 +27,7 @@
     "@react-native/typescript-config": "0.73.1",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
+    "@types/uuid": "^9.0.8",
     "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
     "jest": "^29.6.3",
