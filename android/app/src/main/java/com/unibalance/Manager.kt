@@ -15,6 +15,8 @@ class Manager {
         private val TAG = "AlarmManager"
         private var activeAlarmUid: String? = null
         private var sound: Sound? = null
+
+        var started = false;
         //private var id: Int = 0
         fun schedule(context: Context, alarm: Alarm) {
             //val time = System.currentTimeMillis() + 1000 * 30   // 30 sec from now
@@ -44,15 +46,24 @@ class Manager {
         }
 
         fun start(context: Context, alarmUid: String) {
+            // TODO: vaihda käynnistämään pollaus
+
+            if (started) {
+                return
+            }
+
             activeAlarmUid = alarmUid
             sound = Sound(context)
             sound?.play("default")
+
+            started = true
 
             Log.d(TAG, "Starting $activeAlarmUid")
         }
 
         fun stop(context: Context) {
             Log.d(TAG, "Stopping $activeAlarmUid")
+            started = false
 
             sound?.stop()
             val alarm = Storage.getAlarm(context, activeAlarmUid)

@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.Promise
 
 import android.util.Log
+import com.unibalance.bleconnection.BLEManager
 
 class AlarmModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     //private val manager = Manager()
@@ -23,6 +24,15 @@ class AlarmModule(private val reactContext: ReactApplicationContext) : ReactCont
         Manager.schedule(reactContext, alarm)
         Log.d("AlarmModule", "Create event with time $hour : $minutes  -- ")
     }*/
+
+    @ReactMethod fun bleDebug(promise: Promise) {
+        Log.d("AlarmModule", "BLE things started")
+        BLEManager.start(reactContext)
+    }
+
+    @ReactMethod fun bleStop(promise: Promise) {
+        BLEManager.reset(reactContext)
+    }
 
     @ReactMethod fun set (details: ReadableMap, promise: Promise) {
         val alarm = parseAlarmObject(details)

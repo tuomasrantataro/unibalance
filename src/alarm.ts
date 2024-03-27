@@ -7,6 +7,14 @@ import { v4 as uuid } from 'uuid'
 const { AlarmModule } = NativeModules
 //console.log('nm:', NativeModules, AlarmModule)
 
+export const bleDebug = async () => {
+    await AlarmModule.bleDebug();
+}
+
+export const bleStop = async () => {
+    await AlarmModule.bleStop();
+}
+
 export const scheduleAlarm = async (alarm: any) => {
     if (!(alarm instanceof Alarm)) {
         alarm = new Alarm(alarm)

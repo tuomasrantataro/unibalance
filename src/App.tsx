@@ -43,7 +43,7 @@ import {
   Transforms3d
 } from '@shopify/react-native-skia';
 
-import Alarm, { cancelAlarm, scheduleAlarm, stopAlarm } from './alarm';
+import Alarm, { cancelAlarm, scheduleAlarm, stopAlarm, bleDebug, bleStop } from './alarm';
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = WIDTH
@@ -456,6 +456,10 @@ const App = (): React.JSX.Element => {
     setSelectionState('duration')
   }
 
+  const handleBLEButton = () => {
+    bleDebug()
+  }
+
 
   return (
     <View style={{ padding: 0, flex: 1, flexDirection: 'column', alignItems: 'center', backgroundColor: '#111111' }}>
@@ -560,6 +564,14 @@ const App = (): React.JSX.Element => {
           title="stop alarm"
           color="#4444AA"
         />*/}
+        <Button
+          onPress={handleBLEButton}
+          title="BLE nappi"
+        />
+        <Button
+          onPress={() => bleStop()}
+          title="Stop ble"
+        />
       </View>
     </View>
   );
